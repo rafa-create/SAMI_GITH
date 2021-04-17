@@ -1,1 +1,1 @@
-Test sans internet
+Go pour le squelette :
