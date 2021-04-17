@@ -11,13 +11,13 @@ class Interface():
         self.cote=600
     #initialisation des variables
         self.s=self.j=self.m=self.t=self.a=self.b=0
-    #Création de la fenêtre principale (main window)
+    #Création de la fenêtre  
         self.Mafenetre=Tk()
         self.Mafenetre.title('Suivi du robot en direct')
     # zone de dessin
         self.can=Canvas(self.Mafenetre,width=self.cote,height=self.cote,bg='cyan')
         self.can.pack(side=TOP,padx=5,pady=5)
-    #informer l'utilisateur sur la couleur du Lego
+    #informer l'utilisateur de la couleur du Lego
         rl=5
         self.lego = self.can.create_oval(120-rl,415-rl,120+rl,415+rl,fill="red")
         self.lu,self.lv,self.chemin = [100,112],[100,112],[]
@@ -28,7 +28,7 @@ class Interface():
         self.can.bind_all('<Left>', self.gauche)
         self.can.bind_all('<Right>', self.droite)
         self.can.bind_all('p',self.pause)
-     #informer l'utilisateur sur la couleur dU lego
+     #informer l'utilisateur sur la couleur du lego
         self.can.create_rectangle(10,405,130,425,fill="lightblue")
         self.can.create_text(60,415,text='Position du Lego',fill="black")
         self.can.create_oval(120-rl,415-rl,120+rl,415+rl,fill="red")
