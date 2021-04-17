@@ -1,4 +1,4 @@
-OUELAZOE
+#OUELAZOE
 class Jeu():
     def __init__(self):
         plateau=[]
