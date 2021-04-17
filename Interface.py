@@ -28,7 +28,7 @@ class Interface():
         self.can.bind_all('<Right>', self.droite)
         self.can.bind_all('p',self.pause)
      #informer l'utilisateur sur la couleur du lego
-        b=120#décalage vers le bas des panneaux
+        b=167#décalage vers le bas des panneaux
         self.can.create_rectangle(10,405+b,130,425+b,fill="lightblue")
         self.can.create_text(60,415+b,text='Position du Lego',fill="black")
         self.can.create_oval(120-rl,415-rl+b,120+rl,415+rl+b,fill="red")
