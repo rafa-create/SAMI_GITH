@@ -3,11 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import *
 
-n=15
-xmax=5
-ymax=5
-xinit=0
-yinit=0
 
 
 
@@ -21,7 +16,7 @@ def creerPoints(n,xmax,ymax):
             Liste.append(L)
     return Liste
 
-Liste=creerPoints(n,xmax,ymax)
+
 
 ##
 
@@ -109,38 +104,42 @@ class PlusProcheVoisin():
         return  a
 
 
-# def listeChemins():
-#     M=[]
-#
-#     for i in range(len(Liste)):
-#         L=list(Liste)
-#         p=PlusProcheVoisin(L,i,n,xmax,ymax)
-#         M.append([len(Liste)]+p.listePlusProche())
-#
-#
-#         return(M)
+def listeChemins():
+    M=[]
+
+    for i in range(len(Liste)):
+        L=list(Liste)
+        p=PlusProcheVoisin(L,i,n,xmax,ymax)
+        M.append([len(Liste)]+p.listePlusProche())
 
 
+        return(M)
 
-# p=PlusProcheVoisin(Liste,0,n,xmax,ymax)
-#
-# #print(p.Liste)
+n=15
+xmax=5
+ymax=5
+
+Liste=creerPoints(n,xmax,ymax)
+
+p=PlusProcheVoisin(Liste,0,n,xmax,ymax)
+
+# # print(p.Liste)
 # # print('')
-# #print(p.pointPlusProche())
+# # print(p.pointPlusProche())
 # print(p.listePlusProche())
 # print('')
 # print(Liste)
 # PlusProcheVoisin.trace(p)
 #
 #
-# print(listeChemins())
-# print('')
-# print(distanceParcourt(listeChemins()[0],Liste))
-# print('')
+# # print(listeChemins())
+# # print('')
+# # print(distanceParcourt(listeChemins()[0],Liste))
+# # print('')
 #
 # ##
 # # Liste.append([xinit,yinit])
 # # print(Liste)
 # # print("")
-#
-# ltest=[[1,1],[1,3],[1,4],[1,2]]
+
+ltest=[[1,1],[1,3],[1,4],[1,2]]
