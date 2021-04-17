@@ -1,4 +1,4 @@
-#s'inspirer du tp puiss4
+OUELAZOE
 class Jeu():
     def __init__(self):
         plateau=[]
