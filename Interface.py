@@ -1,7 +1,6 @@
-from tkinter import *
-from random import randrange
 from random import randrange
 from time import sleep
+from tkinter import *
 
 
 class Interface():
@@ -17,7 +16,7 @@ class Interface():
     # zone de dessin
         self.can=Canvas(self.Mafenetre,width=self.cote,height=self.cote,bg='cyan')
         self.can.pack(side=TOP,padx=5,pady=5)
-    #informer l'utilisateur de la couleur du Lego
+    #iinitialisation
         rl=5
         self.lego = self.can.create_oval(120-rl,415-rl,120+rl,415+rl,fill="red")
         self.lu,self.lv,self.chemin = [100,112],[100,112],[]
@@ -29,15 +28,16 @@ class Interface():
         self.can.bind_all('<Right>', self.droite)
         self.can.bind_all('p',self.pause)
      #informer l'utilisateur sur la couleur du lego
-        self.can.create_rectangle(10,405,130,425,fill="lightblue")
-        self.can.create_text(60,415,text='Position du Lego',fill="black")
-        self.can.create_oval(120-rl,415-rl,120+rl,415+rl,fill="red")
+        b=120#décalage vers le bas des panneaux
+        self.can.create_rectangle(10,405+b,130,425+b,fill="lightblue")
+        self.can.create_text(60,415+b,text='Position du Lego',fill="black")
+        self.can.create_oval(120-rl,415-rl+b,120+rl,415+rl+b,fill="red")
     #informer l'utilisateur sur la couleur des Points_a_atteindre
         r=7
-        d=50
-        self.can.create_rectangle(10,405-d,130,425-d,fill="lightblue")
-        self.can.create_text(60,415-d,text='Points à atteindre',fill="black")
-        self.can.create_oval(120-r,415-d-r,120+r,415+r-d,fill="yellow")
+        d=30#decalage entre les deux panneaux
+        self.can.create_rectangle(10,405-d+b,130,425-d+b,fill="lightblue")
+        self.can.create_text(60,415-d+b,text='Points à atteindre',fill="black")
+        self.can.create_oval(120-r,415-d-r+b,120+r,415+r-d+b,fill="yellow")
         for i in range(7):
             pX = randrange(5, self.cote)
             pY = randrange(5, self.cote)
