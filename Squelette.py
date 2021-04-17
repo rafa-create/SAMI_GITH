@@ -1,8 +1,7 @@
-Go pour le squelette :
 from PlusProcheVoisin import *
 
 class RoboLego():
-    def __init__(xinit=0,yinit=0):
+    def __init__(self,xinit=0,yinit=0):
         self.position=[xinit,yinit]
         self.listeNoeuds=[]
 
@@ -14,21 +13,27 @@ class RoboLego():
         listeNoeuds=[]
         for p in points:
             coordonnee=p.split("\t")
-            coordonee[0],coordonnee[1]=float(coo[0]),float(coo[1])
+            coordonnee[0],coordonnee[1]=float(coordonnee[0]),float(coordonnee[1])
             listeNoeuds.append(coordonnee)
 
         return listeNoeuds
 
     def ordreNoeuds(self,listeNoeuds):
         """Prend en parametre une liste de noeuds. Renvoie la liste des noeuds dans le bon ordre de passage. """
-        k=PlusProcheVoisint(listeNoeuds,0,len(listeNoeuds),3,3)
-        listeOrdonnee=PlusProcheVoisin.distanceParcourt(k.nouvelleCoord())
-        return listeOrdonnee
+        k=PlusProcheVoisin(listeNoeuds,0,len(listeNoeuds),1000,1000)
+        k.listePlusProche()
+        PlusProcheVoisin.trace(k)
 
-    def allerVers(self,noeud):
-        """Prend en parametre un noeud. Actionne les roues du robot pour le faire se déplacer depuis sa position actuelle vers un noeud objectif."""
+    def partieAuto(self,noeuds,constantes):
+        """Prend en parametre une liste de noeuds. Actionne les roues du robot pour le faire se déplacer depuis sa position actuelle vers chaque noeud dans l'ordre de la liste."""
 
 
     def cestPartie(self,adresse):
-        listeNoeuds=ordreNoeuds(recupererAdresse(adresse))
-    """Lance le robot. Utilise ordreNoeuds() et allerVers() pour emmener le robot à destination."""
+        """Lance le robot. Utilise ordreNoeuds() et allerVers() pour emmener le robot à destination."""
+        listeNoeuds=ordreNoeuds(recupererNoeuds(adresse))
+
+rob=RoboLego()
+
+liste=rob.recupererNoeuds(r'C:\Users\Remis\Documents\GitHub\SAMI\fichier_de_points.txt')
+
+l=rob.ordreNoeuds(liste)
