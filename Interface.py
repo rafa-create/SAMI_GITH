@@ -4,7 +4,6 @@ from random import randrange
 from time import sleep
 
 
-#coucou maman
 class Interface():
     def __init__(self,Points_a_atteindre,position_lego):
         self.Points_a_atteindre=Points_a_atteindre
