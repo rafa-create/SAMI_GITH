@@ -1,5 +1,5 @@
 from PlusProcheVoisin import *
-from Interface import *
+from Interface import Application
 from  ev3dev2.motor  import  OUTPUT_A , OUTPUT_B , LargeMotor
 import sys, os
 import mocap_node as mcn
@@ -58,7 +58,7 @@ class RoboLego():
         """A compléter."""
         pass
 
-    def cestParti(self,nom_fichier):
+    def cestParti(self,nom_fichier="fichier_de_points"):
         """Lance le robot. Prend en parametre une le nom du fichier contennt les noeuds. Utilise ordreNoeuds() pour ordonner les points, avant de lancer l'interface graphique et la partieAuto pour permettre au robot d'effectuer le trajet."""
         listeNoeuds=self.ordreNoeuds(self.recupererNoeuds(nom_fichier))
         self.__interface=Application(listeNoeuds,self.__position)
