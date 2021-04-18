@@ -2,7 +2,6 @@ from random import randrange
 from time import sleep
 from tkinter import *
 
-
 class Interface():
     def __init__(self,Points_a_atteindre,position_lego):
         self.Points_a_atteindre=Points_a_atteindre
@@ -10,7 +9,7 @@ class Interface():
         self.cote=600
     #initialisation des variables
         self.s=self.j=self.m=self.t=self.a=self.b=0
-    #Création de la fenêtre  
+    #Création de la fenêtre
         self.Mafenetre=Tk()
         self.Mafenetre.title('Suivi du robot en direct')
     # zone de dessin
