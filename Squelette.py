@@ -10,26 +10,31 @@ sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'src'))
 
 class RoboLego():
     def __init__(self,name="Lego1",nomDeConfig="Mon Nom De Config",cst=None):
+
+        #Le nom du robot(pour utiliser les commandes)
         self.__name=name
 
+        #Le Motion Capture node du robot
         self.__mcn=mcn.MocapNode(nomDeConfig)
 
+        #On récupère sa position initiale
         self.__mcn.run()
-
         self.__mcn.UpdateModelInfo()
         self.__position, self.__yaw = self.__mcn.getPos2DAndYaw(self.__name)
-
         self.__mcn.stop()
 
-        self.__listeNoeuds=[]
+        #Eventuelles constantes pour paramétrer le robot
         self.__constantes=cst
+
+        #La future interface du robot
         self.__interface=None
+
+        #Le moteur gauche et droit du robot, à modifier en fonction du robot utilisé
         self.__lmotor , self.__rmotor = [LargeMotor(address) for  address  in (OUTPUT_A , OUTPUT_B)]
 
 
-
     def recupererNoeuds(self,nom_fichier="fichier_de_points"):
-        """Prends en parametre l'adresse du fichier texte contenant les noeuds. Renvoie un liste de noeuds."""
+        """Prends en parametre le du fichier texte contenant les noeuds. Renvoie un liste de noeuds."""
         fichier=open(nom_fichier)
         txt=fichier.read()
         points=txt.split("\n")
@@ -48,15 +53,15 @@ class RoboLego():
         k.listePlusProche()
         self.listeNoeuds=k.nouvelleCoord()
 
+
     def partieAuto(self):
-        """Prend en parametre une liste de noeuds. Actionne les roues du robot pour le faire se déplacer depuis sa position actuelle vers chaque noeud dans l'ordre de la liste."""
-
-
+        """A compléter."""
+        pass
 
     def cestParti(self,nom_fichier):
-        """Lance le robot. Prend en parametre une adresse Utilise ordreNoeuds() et allerVers() pour emmener le robot à destination."""
+        """Lance le robot. Prend en parametre une le nom du fichier contennt les noeuds. Utilise ordreNoeuds() pour ordonner les points, avant de lancer l'interface graphique et la partieAuto pour permettre au robot d'effectuer le trajet."""
         listeNoeuds=self.ordreNoeuds(self.recupererNoeuds(nom_fichier))
-        self.__interface=Application(self.__listeNoeuds,self.__position)
+        self.__interface=Application(listeNoeuds,self.__position)
         self.__mcn.run()
         # self.__interface.Mafenetre.mainloop()
         # self.partieAuto()
