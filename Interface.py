@@ -1,12 +1,11 @@
 from random import randrange
-from time import sleep
 from tkinter import *
 
 class Interface():
     def __init__(self,Points_a_atteindre,position_lego):
     #initialisation des variables graphiques
-        self.pres=4
-        self.trace=6
+        self.pres=5
+        self.trace=0.5
         self.tlego=14
         self.Points_a_atteindre=Points_a_atteindre
         self.position_lego=position_lego
@@ -24,7 +23,7 @@ class Interface():
         self.can.bind_all('<Left>', self.gauche)
         self.can.bind_all('<Right>', self.droite)
         self.can.bind_all('p',self.pause)
-     #informer l'utilisateur sur la couleur du lego
+    #informer l'utilisateur sur la couleur du lego
         b=167#décalage vers le bas des panneaux
         rl=7
         self.can.create_rectangle(10,405+b,130,425+b,fill="lightblue")
@@ -36,7 +35,7 @@ class Interface():
         self.can.create_rectangle(10,405-d+b,130,425-d+b,fill="lightblue")
         self.can.create_text(60,415-d+b,text='Points à atteindre',fill="black")
         self.can.create_oval(120-r,415-d-r+b,120+r,415+r-d+b,fill="yellow")
-    #initialisation
+    #initialisation lego
         self.lego =self.can.create_oval(120-rl,415-rl+b,120+rl,415+rl+b,fill="red")
         self.lu,self.lv,self.chemin = [100,112],[100,112],[]
         self.chemin.append(self.lego)
@@ -52,15 +51,14 @@ class Interface():
                 self.lv[c]=self.lv[c-1]
                 c+=-1
     #On fait la trace
-        self.can.create_rectangle(self.lu[c]+self.trace,self.lv[c]+self.trace,self.lu[c]+10-self.trace,self.lv[c]+10-self.trace,fill='black')
+        self.can.create_rectangle(self.lu[c]+self.trace+7,self.lv[c]+self.trace+7,self.lu[c]-self.trace+7,self.lv[c]-self.trace+7,fill='black')
     #On change les coordonées du Lego
         self.lu[0] += self.a
         self.lv[0] += self.b
     #On applique les nouvelles coordonnées aux carrés correspondant
         self.can.coords(self.chemin[c],self.lu[c],self.lv[c],self.lu[c]+self.tlego,self.lv[c]+self.tlego)
-    #commande pour la pause
         if self.j!=1 and self.m!=1:
-            self.can.after(30,self.deplacement)
+            self.can.after(300,self.deplacement)
     def gauche(self,event):
         self.a=-self.pres
         self.b=0
