@@ -51,6 +51,16 @@ class RobotLego():
 
     def ordreNoeuds(self,listeNoeuds):
         """Prend en parametre une liste de noeuds. Renvoie la liste des noeuds dans le bon ordre de passage. """
+        x=[]
+        y=[]
+        for noeud in listeNoeuds:
+            x.append(noeud[0])
+            y.append(noeud[1])
+        n=len(x)
+
+        A=Algo(x,y,len(x)+1,max(x),max(y),self.position[0],self.position[1])
+        chemin=A.listeChemins()
+        nouveauxPoitns=A.pointsNouvelOrdre(chemin,x,y)
         return listeNoeuds
 
 
@@ -123,7 +133,7 @@ class RobotLego():
 ###
 
 rob=RobotLego(adresseIP="100.75.155.131",name="Lego1",nomDeConfig="PC6")
-nodes=rob.recupererNoeuds()
-rob.commandeRobot(nodes)
+# nodes=rob.recupererNoeuds()
+# rob.commandeRobot(nodes)
 
 
