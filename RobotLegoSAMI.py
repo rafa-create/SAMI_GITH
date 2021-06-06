@@ -1,4 +1,4 @@
-from PlusProcheVoisin import *
+from partieMaths import *
 # from  ev3dev2.motor  import  OUTPUT_C , OUTPUT_B , LargeMotor
 import sys, os
 
